@@ -1,0 +1,18 @@
+# Private local data and development-only integrations
+/diagnostics/
+/outputs/
+/.merch-seo.json
+/scripts/listings.json
+/scripts/build-reference.mjs
+/scripts/configure-colors.py
+/scripts/merch_research.py
+node_modules/
+__pycache__/
+*.pyc
+*.zip
+.DS_Store
+.env
+.env.*
+*.pem
+*.key
+/scripts/node_modules

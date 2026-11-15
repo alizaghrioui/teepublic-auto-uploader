@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "status": "VERIFIED_PREPARATION_AND_FIRST_PUBLICATION",
+  "observedAt": "2026-11-14",
+  "entryUrl": "https://www.teepublic.com/design/quick_create",
+  "steps": [
+    {
+      "step": 1,
+      "actionType": "navigate",
+      "url": "https://www.teepublic.com/design/quick_create",
+      "verified": true
+    },
+    {
+      "step": 2,
+      "actionType": "file",
+      "selectorRole": "file",
+      "verified": true
+    },
+    {
+      "step": 3,
+      "actionType": "wait",
+      "selectorRole": "uploadReady",
+      "loadingStates": [
+        "UPLOADING",
+        "PROCESSING"
+      ],
+      "verified": true
+    },
+    {
+      "step": 4,
+      "actionType": "fill",
+      "selectorRoles": [
+        "title",
+        "description",
+        "mainTag"
+      ],
+      "source": "CSV",
+      "verified": true
+    },
+    {
+      "step": 5,
+      "actionType": "commitTags",
+      "selectorRole": "tags",
+      "source": "CSV additional_tags",
+      "verified": true
+    },
+    {
+      "step": 6,
+      "actionType": "select",
+      "selectorRole": "matureNo",
+      "verified": true
+    },
+    {
+      "step": 7,
+      "actionType": "palette",
+      "modes": {
+        "black": "Dark",
+        "light": "Light"
+      },
+      "blackVerified": true,
+      "lightControlDOMVerified": true
+    },
+    {
+      "step": 8,
+      "actionType": "apparelDefaults",
+      "modes": {
+        "black": "Black; Baseball Tee Black/White",
+        "light": "White where available; review unavailable products"
+      },
+      "blackAllNineVerified": true
+    },
+    {
+      "step": 9,
+      "actionType": "previewReview",
+      "imageLoadVerified": true,
+      "requiresPerDesignHumanReview": true
+    },
+    {
+      "step": 10,
+      "actionType": "approveTermsAndPublish",
+      "requiresExplicitApproval": true,
+      "verified": true
+    },
+    {
+      "step": 11,
+      "actionType": "verifyPublication",
+      "matches": [
+        "public route",
+        "design ID",
+        "canonical ID",
+        "design title"
+      ],
+      "verified": true
+    }
+  ],
+  "observations": [
+    {
+      "method": "Authenticated browser exploration",
+      "verified": true,
+      "findings": [
+        "Editor ID is allocated before artwork upload; it is not publication proof.",
+        "Title, Description, Main Tag and Supporting Tags are supported.",
+        "Product Colors Dark/Light and default apparel colors are separate controls.",
+        "T-Shirt color is configured before Baseball Tee; other defaults are checked before publication.",
+        "Submission requires explicit terms approval and a single-use design-bound token."
+      ]
+    }
+  ],
+  "unverified": [
+    "Live multi-design bulk publication is not verified.",
+    "Latest UI updates have not been regression-tested.",
+    "Missing recorded light colors require manual review."
+  ],
+  "publicationEnabled": false,
+  "publicationApprovalPolicy": "Explicit approval for the selected batch; defaults off and resets after each run.",
+  "colorSequenceOverride": {
+    "introducedIn": "0.1.7",
+    "writeProducts": [
+      "tshirt",
+      "baseballtee"
+    ],
+    "otherApparel": "inherit T-Shirt default; do not click individual dropdowns",
+    "source": "User requested sequence and supplied editor screenshot",
+    "validation": "Not live-tested for this change at user request; final publication still verifies all recorded default colors"
+  }
+}

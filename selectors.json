@@ -1,0 +1,183 @@
+{
+  "version": 1,
+  "status": "VERIFIED",
+  "selectors": {
+    "file": {
+      "selector": "form:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > input:nth-of-type(1)",
+      "tag": "INPUT",
+      "type": "file",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    "uploadReady": {
+      "selector": "form:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > a:nth-of-type(2)",
+      "tag": "A",
+      "type": "",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    "title": {
+      "selector": "#design_design_title",
+      "tag": "INPUT",
+      "type": "text",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    "description": {
+      "selector": "#design_design_description",
+      "tag": "TEXTAREA",
+      "type": "textarea",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    "mainTag": {
+      "selector": "#design_primary_tag",
+      "tag": "INPUT",
+      "type": "text",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    "matureNo": {
+      "selector": "#design_content_flag_false",
+      "tag": "INPUT",
+      "type": "radio",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    "colorMenu": {
+      "selector": "tr:nth-of-type(2) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": "",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    "white": {
+      "selector": "tr:nth-of-type(2) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": "",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    "black": {
+      "selector": "tr:nth-of-type(2) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": "",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    "preview": {
+      "selector": "div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > img:nth-of-type(1)",
+      "tag": "IMG",
+      "type": "",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    "publish": {
+      "selector": "div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(2) > button:nth-of-type(1)",
+      "tag": "BUTTON",
+      "type": "submit",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    "colorState": {
+      "selector": "tr:nth-of-type(2) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": "",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    "tags": {
+      "selector": "#secondary_tags input[type=\"text\"]",
+      "verifiedAt": "2026-11-14T23:26:17.512266+00:00",
+      "status": "VERIFIED_UNIQUE"
+    },
+    "terms": {
+      "selector": "#terms",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    }
+  },
+  "note": "Recorded real TeePublic controls. Runtime uniqueness and publication checks remain required; site changes can invalidate this profile.",
+  "apparelColors": [
+    {
+      "product": "tshirt",
+      "menu": "tr:nth-of-type(2) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+      "black": "tr:nth-of-type(2) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)",
+      "blackLabel": "Black",
+      "white": "tr:nth-of-type(2) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    {
+      "product": "hoodie",
+      "menu": "tr:nth-of-type(3) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+      "black": "tr:nth-of-type(3) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(3) > a:nth-of-type(1)",
+      "blackLabel": "Black",
+      "white": null,
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    {
+      "product": "tank",
+      "menu": "tr:nth-of-type(4) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+      "black": "tr:nth-of-type(4) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(3) > a:nth-of-type(1)",
+      "blackLabel": "Black",
+      "white": "tr:nth-of-type(4) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    {
+      "product": "crewneck",
+      "menu": "tr:nth-of-type(5) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+      "black": "tr:nth-of-type(5) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)",
+      "blackLabel": "Black",
+      "white": "tr:nth-of-type(5) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    {
+      "product": "longsleevetshirt",
+      "menu": "tr:nth-of-type(6) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+      "black": "tr:nth-of-type(6) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)",
+      "blackLabel": "Black",
+      "white": "tr:nth-of-type(6) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    {
+      "product": "baseballtee",
+      "menu": "tr:nth-of-type(7) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+      "black": "tr:nth-of-type(7) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)",
+      "blackLabel": "Black/White",
+      "white": null,
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    {
+      "product": "kids",
+      "menu": "tr:nth-of-type(8) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+      "black": "tr:nth-of-type(8) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > a:nth-of-type(1)",
+      "blackLabel": "Black",
+      "white": "tr:nth-of-type(8) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)",
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    {
+      "product": "kidshoodie",
+      "menu": "tr:nth-of-type(9) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+      "black": "tr:nth-of-type(9) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(3) > a:nth-of-type(1)",
+      "blackLabel": "Black",
+      "white": null,
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    },
+    {
+      "product": "kidslongsleevetshirt",
+      "menu": "tr:nth-of-type(10) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+      "black": "tr:nth-of-type(10) > td:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)",
+      "blackLabel": "Black",
+      "white": null,
+      "verifiedAt": "2026-11-14T23:24:23.643Z"
+    }
+  ],
+  "palette": {
+    "black": {
+      "selector": "div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(3)",
+      "verifiedAt": "2026-11-14T23:44:18.722Z",
+      "label": "Dark"
+    },
+    "light": {
+      "selector": "div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)",
+      "verifiedAt": "2026-11-14T23:44:18.722Z",
+      "label": "Light"
+    }
+  },
+  "colorChecks": {
+    "White": "#additional_colors_12",
+    "Black": "div:nth-of-type(2) > input:nth-of-type(6)"
+  },
+  "publication": {
+    "verifiedAt": "2026-11-14T23:49:37.259Z",
+    "pathPrefix": "/t-shirt/",
+    "headingSelector": "div:nth-of-type(2) > div:nth-of-type(1) > h1:nth-of-type(1)"
+  }
+}

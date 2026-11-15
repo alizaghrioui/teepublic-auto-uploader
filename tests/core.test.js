@@ -1,0 +1,12 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import {parseCSV,metadata,validateMetadata,csvExport,safeUrl,assertProfile,nextItem} from '../src/core.js';
+test('CSV BOM, quoted commas, escaped quotes, multiline and CRLF',()=>{const r=parseCSV('\uFEFFfilename,title,description,main_tag\r\na.png,"A, B","A ""quote""\nnext",cat\r\n');assert.equal(r[0].title,'A, B');assert.equal(r[0].description,'A "quote"\nnext');});
+test('Malformed CSV fails',()=>{assert.throws(()=>parseCSV('a,b\n"x,y'));assert.throws(()=>parseCSV('a,b\nx'));assert.throws(()=>parseCSV('a,a\nx,y'));});
+test('Amazon CSV alias is recognized without inventing missing tags',()=>{const m=metadata({'file-name':'x.png',title:'T',description:'D'});assert.equal(m.filename,'x.png');assert.throws(()=>validateMetadata(m),/mainTag/);});
+test('Mature content cannot be automatically labeled no',()=>{assert.throws(()=>validateMetadata({matureContent:'yes'}),/manual/);});
+test('Result export quotes and neutralizes spreadsheet formula injection',()=>{const r=csvExport([{filename:'=HYPERLINK("x")',error:'a,b\nc'}]);assert.match(r,/'=HYPERLINK/);assert.match(r,/"a,b\nc"/);});
+test('Only plain TeePublic HTTPS URLs allowed',()=>{assert.equal(safeUrl('https://www.teepublic.com/design/quick_create'),'https://www.teepublic.com/design/quick_create');for(const u of ['http://www.teepublic.com/','https://evil.com/','https://www.teepublic.com/?token=x','https://user:pass@www.teepublic.com/'])assert.throws(()=>safeUrl(u));});
+test('Unrecorded shipped profile cannot run',async()=>{const p=JSON.parse(await fs.readFile(new URL('../workflow.json',import.meta.url)));assert.throws(()=>assertProfile(p,'light'),/HOLD_RECORDING/);assert.throws(()=>assertProfile({...p,status:'VERIFIED'},'black'),/Unverified selector/);});
+test('Next item ignores completed and review records',()=>{assert.equal(nextItem([{status:'review'},{status:'pending',filename:'next'}]).filename,'next');});
+test('Generic CSV template imports a complete listing without private fixtures',async()=>{const rows=parseCSV(await fs.readFile(new URL('../examples/listing-template.csv',import.meta.url),'utf8'));assert.equal(rows.length,1);validateMetadata(metadata(rows[0]));assert.equal(rows[0].filename,'example.png');});
