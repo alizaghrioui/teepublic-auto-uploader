@@ -66,6 +66,26 @@ $('attachDraft').onclick=wrap(async()=>{
  if(!confirm(`Attach ${item.filename} to existing draft ${new URL(tab.url).pathname}? Confirm this draft is unpublished and belongs to this artwork. Testing replaces its artwork and metadata without publishing.`))return;
  Object.assign(item,{reuseUploadedArtwork:item.phase>=2,draftUrl:tab.url,designId:new URL(tab.url).pathname.split('/')[2],tabId:tab.id,status:'pending',actionInFlight:false,error:''});await put('items',item);await log('attachDraft',`${item.filename}: ${item.designId}`);await render();
 });
+async function completeDraftListing(hash){
+ if(queue.running||publishing)throw Error('Stop the active batch before completing an existing draft');
+ await navigator.locks.request('tp-queue',{ifAvailable:true},async lock=>{
+  if(!lock)throw Error('Another workspace owns the active queue');
+  let item=await get('items',hash);if(!item)throw Error('Stored design not found');
+  if(['success','publishing','publication_unverified'].includes(item.status)||item.publishedUrl||item.recordedPublishedUrl)throw Error('Check the existing publication outcome first');
+  if(rows.length){
+   const row=rows.find(r=>r.filename===item.filename);if(!row)throw Error(`No exact listing row for ${item.filename} in the selected sheet`);
+   validateMetadata(row);if(row.recordedPublishedUrl)throw Error('Sheet records this design as already published; verify its public page first');
+   item={...item,...row,mode:['light','black'].includes(row.mode)?row.mode:item.mode};await put('items',item);
+  }
+  validateMetadata(item);selected.add(hash);
+  message(`Completing ${item.filename} in its existing draft. Artwork will not be re-uploaded; publication stays off.`);
+  await log('completeDraftListing',`${item.filename}: user requested listing completion in existing draft`);
+  await queue.start({mode:['light','black'].includes(item.mode)?item.mode:document.querySelector('[name=mode]:checked').value,delay:$('delay').value,testOnly:true,useCsvModes:true,selected:[hash],completeDraftHash:hash});
+  const result=await get('items',hash);
+  message(result.status==='review'?`${item.filename}: listing completed in the existing draft. Review the preview before publishing.`:`${item.filename}: ${result.error||result.status}. Existing draft kept for review.`);
+ });
+ await render();
+}
 $('start').onclick=wrap(async()=>{
  if(!selected.size)throw Error('Select at least one pending design');
  if(!await navigator.locks.request('tp-queue',{ifAvailable:true},async lock=>{if(!lock)return false;await queue.start({mode:document.querySelector('[name=mode]:checked').value,delay:$('delay').value,testOnly:$('testOnly').checked,useCsvModes:$('csvModes').checked,selected:[...selected]});return true;}))throw Error('Another workspace tab owns the queue');
@@ -160,7 +180,12 @@ $('exportWorkflow').onclick=wrap(async()=>{const p=await get('settings','profile
 async function exportRecordedWorkflow(p){const recordedActions=(await all('logs')).filter(x=>['record','step','bind'].includes(x.action)).map((x,i)=>({step:i+1,actionType:x.actionType||x.action,selector:x.selector,targetField:x.targetField||x.detail,selectedValue:x.selectedValue,timestamp:x.timestamp,success:x.success??null,error:x.error||''}));download('workflow.json',JSON.stringify({...p,steps:recordedActions},null,2));}
 async function render(){
  const items=(await all('items')).filter(i=>!i.hiddenFromQueue);$('queue').replaceChildren();
- for(const i of items){const tr=document.createElement('tr'),c=document.createElement('input');c.type='checkbox';c.checked=selected.has(i.hash);c.onchange=()=>c.checked?selected.add(i.hash):selected.delete(i.hash);const td=document.createElement('td');td.append(c);tr.append(td);const title=text('td',i.filename);title.append(text('small',i.title));tr.append(title,text('td',i.mode),text('td',i.status));const link=document.createElement('td');if(i.publishedUrl||i.draftUrl){const a=text('a',i.publishedUrl?'Published':'Open draft');a.href=i.publishedUrl||i.draftUrl;a.target='_blank';a.rel='noopener';link.append(a);}tr.append(link,text('td',i.error||''));$('queue').append(tr);}
+ for(const i of items){const tr=document.createElement('tr'),c=document.createElement('input');c.type='checkbox';c.checked=selected.has(i.hash);c.onchange=()=>c.checked?selected.add(i.hash):selected.delete(i.hash);const td=document.createElement('td');td.append(c);tr.append(td);const title=text('td',i.filename);title.append(text('small',i.title));tr.append(title,text('td',i.mode),text('td',i.status));const link=document.createElement('td');if(i.publishedUrl||i.draftUrl){
+  if(i.draftUrl&&!i.publishedUrl&&!i.recordedPublishedUrl&&!['success','publishing','publication_unverified'].includes(i.status)){
+   const complete=text('button','Open draft & Complete listing');complete.type='button';complete.disabled=queue.running||publishing;complete.onclick=wrap(()=>completeDraftListing(i.hash));link.append(complete);
+   const view=text('a','View only');view.href=i.draftUrl;view.target='_blank';view.rel='noopener';link.append(text('small',''),view);
+  }else{const a=text('a',i.publishedUrl?'Published':'Open draft — Review outcome');a.href=i.publishedUrl||i.draftUrl;a.target='_blank';a.rel='noopener';link.append(a);}
+ }tr.append(link,text('td',i.error||''));$('queue').append(tr);}
  const counts={};for(const i of items)counts[i.status]=(counts[i.status]||0)+1;
  for(const k of ['success','failed','pending','review'])$(k).textContent=k==='review'?(counts.review||0)+(counts.publication_unverified||0):counts[k]||0;
  $('progress').max=Math.max(1,items.length);$('progress').value=items.filter(x=>['review','success','failed','stopped'].includes(x.status)).length;

@@ -130,6 +130,10 @@
      guard();const {action,selector:s,value}=m.step;let el;
      if(action==='wait'){show('Auto Uploader · Waiting for upload processing');const ready=await wait(s);await revealWork(ready,'uploadReady');return {verified:true};}
      el=target(s,{hidden:action==='file'});await revealWork(el,m.step.role);
+     if(action==='draft'){
+      if(!/^publish$/i.test((el.textContent||el.value||'').trim()))throw Error('Cannot confirm this is an unpublished draft; review the editor manually');
+      return {verified:true};
+     }
      if(action==='file'){
       if(el.type!=='file')throw Error('Recorded target is not a file input');
       if(!m.file?.data||!m.file.name.endsWith('.png'))throw Error('PNG missing');
@@ -145,7 +149,10 @@
      }
      if(action==='tags'){
       const tokens=value.split(',').map(x=>x.trim()).filter(Boolean);
-      fill(el,value,false);el.focus();
+      const existing=document.querySelector('#secondary_tags ul.taggle_list');
+      const missing=tokens.filter(t=>!existing?.innerText.toLowerCase().includes(t.toLowerCase()));
+      if(!missing.length&&!el.value.trim())return {verified:true,tokens};
+      fill(el,missing.join(', '),false);el.focus();
       for(const type of ['keydown','keypress','keyup'])el.dispatchEvent(new KeyboardEvent(type,{key:'Enter',code:'Enter',keyCode:13,which:13,bubbles:true,cancelable:true}));
       await new Promise(r=>setTimeout(r,200));
       const list=document.querySelector('#secondary_tags ul.taggle_list');

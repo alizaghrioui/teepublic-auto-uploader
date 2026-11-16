@@ -5,6 +5,6 @@
   "scripts": {
     "test": "node --test tests/*.test.js"
   },
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Chrome extension for local TeePublic design queues, CSV listings and approved batch uploads."
 }

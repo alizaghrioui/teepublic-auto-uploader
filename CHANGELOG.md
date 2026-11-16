@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.13 — Complete existing draft listings
+
+- Open draft & Complete listing reuses the saved draft and metadata without uploading artwork again or allocating a new design.
+- Reopen closed editor tabs, use the matching selected CSV row when supplied, and retain View only.
+- Block active/known-published/uncertain outcomes and changed editor identity.
+- Reuse committed tags and leave completed drafts ready for review; never auto-publish this recovery action.
+- No tests or trial uploads/publications run.
+
 ## 0.1.12 — Public repository preparation
 
 - Public installation, workflow, privacy, contribution and security documentation.

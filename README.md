@@ -59,6 +59,14 @@ Use **Advanced tools → Test one design only** for an optional trial. **Advance
 
 **Stop Bulk Auto Upload** stops before the next action and clears approvals. **Stop Publishing** stops further submissions. A dispatched operation may finish; an already-submitted publication is still checked. The batch stops at its first failure or uncertain publication and does not blindly retry. Restarting a stopped/interrupted draft requires review to prevent duplicate server uploads.
 
+## Complete an interrupted draft listing
+
+Click **Open draft & Complete listing** on a queue row that already has a saved draft URL. The extension reuses that exact editor tab, or opens the saved draft URL if its tab was closed. It completes title, description, main/additional tags and recorded color settings, then checks the preview and leaves the design in **review**. It does not create a new design, re-upload artwork, accept terms or publish.
+
+Stored listing metadata is reused. If a CSV is currently selected, its exact filename-matching row updates that design's listing before completion. Missing metadata or an unmatched selected sheet blocks the action. **View only** opens the draft without editing it.
+
+Active batches must be stopped first. Known successful/publishing/uncertain-publication records are excluded from automatic draft completion. The stored design ID and URL must agree; unexpected redirects, missing uploaded-artwork controls or a publish control that does not identify an unpublished draft stop recovery. An incomplete artwork upload may still need manual review. Existing committed tags are reused rather than added again. This completes the editor form; it does not submit a Save for Later action.
+
 ## Colors
 
 - **Black Shirt:** activate **Dark**, set T-Shirt to Black, then Baseball Tee to the recorded Black/White option.

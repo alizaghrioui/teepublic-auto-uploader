@@ -18,3 +18,7 @@ The public repository preparation updates documentation, packaging exclusions an
 When explicitly requested, use one unpublished design first. Check CSV matching, required fields, tags, Dark/Light palette, T-Shirt → Baseball Tee sequence, inherited apparel defaults, image visibility, pause/resume/stop, duplicate rejection and public URL/title/ID verification. Verify successful tabs close and error tabs remain open. Reload must preserve queue history and hold interrupted work without resubmission.
 
 Publishing and acceptance of website terms require the user's explicit approval. Never use real account credentials or session data in fixtures or diagnostic submissions.
+
+## 0.1.13
+
+Existing-draft listing completion was implemented without executing tests or browser automation against TeePublic, per the standing instruction. Completion uses the saved editor URL/ID, skips file upload and design creation, checks the existing unpublished editor control, reuses existing tag tokens and leaves the result in review. No live recovery claim is made.

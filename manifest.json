@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TeePublic Auto Uploader",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Local upload queue and verified workflow recorder for your signed-in TeePublic session.",
   "minimum_chrome_version": "120",
   "permissions": [
